@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Present {
+  id        String    @id @default(uuid())
+  ebook     String    @unique
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  waitingLists WaitingList[]
+
+  @@map("presents")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  waitingListId String    @map("waiting_list_id")
+  name          String
+  email         String    @unique
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime? @updatedAt @map("updated_at")
+
+  lists WaitingList @relation(fields: [waitingListId], references: [id])
+
+  @@map("users")
+}
+
+model WaitingList {
+  id        String    @id @default(uuid())
+  presentId String    @unique @map("present_id")
+  userId    String    @map("user_id")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  present Present @relation(fields: [presentId], references: [id])
+  user    User[]
+
+  @@map("waiting_lists")
+}
