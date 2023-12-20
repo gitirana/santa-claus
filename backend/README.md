@@ -6,10 +6,10 @@ This app is built with Nest.js and Prisma.
 
 ### Features
 
-- [] Register a gift in the list of available gifts
-- [] View available gifts list
-- [] Register a user on a gift waiting list
-- [] Send presents via e-mail
+- [ ] Register a gift in the list of available gifts
+- [ ] View available gifts list
+- [ ] Register a user on a gift waiting list
+- [ ] Send presents via e-mail
       
 ---
 
