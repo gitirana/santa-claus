@@ -1,1 +1,1 @@
-# santa-claus
+# santa-claus project
