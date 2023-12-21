@@ -38,10 +38,12 @@ export class CreatePresentController {
       })
     }
 
-    await this.prisma.present.create({
+    const present = await this.prisma.present.create({
       data: {
         ebook,
       },
     })
+
+    return present
   }
 }

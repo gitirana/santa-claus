@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common'
 import { CreateModule } from './controllers/create/create.module'
+import { ListModule } from './controllers/list/list.module'
 
 @Module({
-  imports: [CreateModule],
+  imports: [CreateModule, ListModule],
   controllers: [],
   providers: [],
 })
